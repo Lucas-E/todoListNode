@@ -43,6 +43,16 @@ app.listen(PORT, () => {
     console.log('Servidor Rodando!');
 })
 
+app.get('/remover/:id', (req,res) => {
+    let postagem_id = req.params.id;
+    todo.destroy({
+        where: {
+            id: postagem_id
+        }
+    })
+    res.redirect('/')
+})
+
 //post ROUTES
 
 app.post('/', (req, res) => {
@@ -59,3 +69,4 @@ app.post('/', (req, res) => {
 
     }
 })
+
